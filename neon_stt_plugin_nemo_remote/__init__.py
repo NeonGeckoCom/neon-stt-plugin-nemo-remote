@@ -50,12 +50,12 @@ class NemoRemoteSTT(STT):
                              headers={"Content-Type": "audio/wav"},
                              params={"lang": lang})
 
-    def _get_from_public_servers(self, audio: AudioData, lang: str):
+    def _get_from_public_servers(self, audio: AudioData, lang: str) -> str:
         for url in self.public_servers:
             try:
                 r = self._get_response(audio, lang, f"{url}{self.api_path}")
                 if r.ok:
-                    return r.text
+                    return r.text.strip('"')
             except:
                 continue
         raise RuntimeError(f"All Nemo public servers are down.")
@@ -76,7 +76,7 @@ class NemoRemoteSTT(STT):
                 url = f"{self.url}{self.api_path}"
             resp = self._get_response(audio, lang, url)
             if resp.ok:
-                tx = resp.text
+                tx = resp.text.strip('"')
                 LOG.info(f"Transcribed: {tx}")
                 return tx
 

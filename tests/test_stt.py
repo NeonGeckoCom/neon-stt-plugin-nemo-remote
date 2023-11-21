@@ -50,6 +50,7 @@ class TestGetSTT(unittest.TestCase):
             with sr.AudioFile(audio_path) as source:
                 audio = r.record(source)  # read the entire audio file
                 result = self.stt.execute(audio)
+                self.assertFalse(result.startswith('"'))
                 self.assertIn(transcription, result)
 
 
