@@ -89,6 +89,7 @@ class NemoRemoteSTT(STT):
             LOG.exception(e)
             return ""
 
+    @property
     def available_languages(self) -> set:
         # TODO: Read from remote API
         return {"en", "es", "fr", "de", "it", "uk", "nl", "pt", "ca"}
