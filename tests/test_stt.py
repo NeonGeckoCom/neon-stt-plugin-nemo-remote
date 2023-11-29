@@ -56,7 +56,7 @@ class TestGetSTT(unittest.TestCase):
     def test_available_languages(self):
         langs = self.stt.available_languages
         self.assertIsInstance(langs, set)
-        self.assertTrue(all((isinstance(str, l) for l in langs)))
+        self.assertTrue(all((isinstance(l, str) for l in langs)))
         self.assertIn("en", langs)
 
 
