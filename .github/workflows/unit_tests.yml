@@ -33,8 +33,8 @@ jobs:
         run: |
           pytest tests/test_stt.py --junitxml=tests/stt-test-results.xml
       - name: Upload STT test results
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
-          name: pytest-results-3.7
+          name: pytest-results-${{ matrix.python-version }}
           path: tests/stt-test-results.xml
         if: ${{ always() }}
