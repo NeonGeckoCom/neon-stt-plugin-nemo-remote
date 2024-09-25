@@ -35,7 +35,8 @@ from speech_recognition import AudioData
 
 class NemoRemoteSTT(STT):
     default_lang = "en"
-    public_servers = ["https://nemo.neonaialpha.com"]
+    public_servers = ["https://nemo.neonaiservices.com",
+                      "https://nemo.neonaibeta.com"]
 
     def __init__(self, config: dict = None):
         super().__init__(config)
